@@ -6,6 +6,12 @@ export default function Modal({ open, setOpen, type, setFilter}) {
 
   const cancelButtonRef = useRef(null);
 
+  const capitlizeFirst = (str) => {
+    // checks for null, undefined and empty string
+    if (!str) return;
+    return str.match("^[a-z]") ? str.charAt(0).toUpperCase() + str.substring(1) : str;
+  }
+
   const [data, setData] = useState([]);
 
   const maps = {
@@ -80,7 +86,7 @@ export default function Modal({ open, setOpen, type, setFilter}) {
           >
             <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
               <div className="bg-white px-4 sm:p-6 sm:pb-4">
-                <h2>{type}</h2>
+                <h2>{capitlizeFirst(type)}</h2>
 
                 {type !== 'mealCategories' && (
                   <>
